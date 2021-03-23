@@ -110,7 +110,7 @@ topdist_share <- make_group_violins(
 topdist_share
 
 full_violin <- ggarrange(
-  topdist_share, topdist_comp, topdist_prices, ncol = 3, 
+  topdist_share, topdist_prices, topdist_comp, ncol = 3, 
   labels = paste0(LETTERS[1:3], ")"), common.legend = T, legend = "bottom")
 
 full_violin <- ggpubr::annotate_figure(
@@ -119,7 +119,7 @@ full_violin <- ggpubr::annotate_figure(
     "Joint effect of topology and allocation of complexity", size = 16), 
   fig.lab.size = 18)
 
-file_name <- "text/figures/topdist_dist.pdf"
+file_name <- "figures/topdist_dist.pdf"
 
 ggsave(filename = here(file_name), plot = full_violin, width = 12, height = 5)
 

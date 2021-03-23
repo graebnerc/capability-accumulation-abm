@@ -67,7 +67,7 @@ topology_price_mean <- make_point_plot(
 
 # Full plot- ------------------------------------------------------------------
 
-file_name <- paste0("text/figures/allocation_dist_", stat_used,".pdf")
+file_name <- paste0("figures/allocation_dist_", stat_used,".pdf")
 
 topology_total <- ggpubr::ggarrange(#topology_total_output, 
   topology_share_products, 
@@ -75,6 +75,12 @@ topology_total <- ggpubr::ggarrange(#topology_total_output,
   topology_complexity,
   ncol = 3, nrow = 1, labels = paste0(LETTERS[1:3], ")"),
   font.label = list(size=18) , common.legend = T, legend = "bottom")
+
+topology_total <- ggpubr::annotate_figure(
+  topology_total, 
+  top = ggpubr::text_grob(
+    "Effect of the allocation of product complexity values", size = 20), 
+  fig.lab.size = 18)
 
 ggsave(plot = topology_total, 
        filename = here(file_name), 

@@ -71,7 +71,7 @@ full_map <- ggpubr::annotate_figure(
     ), size = 16)
   )
 
-file_name <- "text/figures/vistop_heatmap.pdf"
+file_name <- "figures/vistop_heatmap.pdf"
 
 ggsave(filename = here(file_name), plot = full_map, width = 12, height = 5)
 

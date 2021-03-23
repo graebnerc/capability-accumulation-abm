@@ -119,11 +119,11 @@ saturation_prices <- make_point_plot(
 
 # The full plot----------------------------------------------------------------
 
-file_name <- paste0("text/figures/sensitivity_", stat_used, ".pdf")
+file_name <- paste0("figures/sensitivity_", stat_used, ".pdf")
 
 sensitivity_total <- ggpubr::ggarrange(
   ggpubr::ggarrange(
-    saturation_share_products, saturation_complexity, saturation_prices, 
+    saturation_share_products, saturation_prices, saturation_complexity, 
     ncol = 3, nrow = 1, labels = paste0(LETTERS[1:3], ")"), 
     font.label = list(size=17),
     common.legend = T, legend = "bottom"),

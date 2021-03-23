@@ -76,7 +76,7 @@ topology_price_mean <- make_point_plot(
 
 # Full plot -------------------------------------------------------------------
 
-file_name <- paste0("text/figures/topology_dist_", stat_used, ".pdf")
+file_name <- paste0("figures/topology_dist_", stat_used, ".pdf")
 
 topology_total <- ggpubr::ggarrange(
   topology_share_products, 
@@ -86,6 +86,13 @@ topology_total <- ggpubr::ggarrange(
   labels = paste0(LETTERS[1:3], ")"), 
   font.label = list(size=17), 
   common.legend = T, legend = "bottom")
+
+topology_total <- ggpubr::annotate_figure(
+  topology_total, 
+  top = ggpubr::text_grob(
+    "The impact of different product space topologies", size = 20), 
+  fig.lab.size = 18)
+
 
 ggsave(plot = topology_total, 
        filename = here(file_name), 

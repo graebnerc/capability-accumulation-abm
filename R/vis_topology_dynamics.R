@@ -130,7 +130,7 @@ dyn_plot <- ggarrange(
   ncol = 3, labels = paste0(LETTERS, ")"), font.label = list(size=18),
   legend = "bottom", common.legend = T)
 
-file_name <- "text/figures/topology_dynamics.pdf"
+file_name <- "figures/topology_dynamics.pdf"
 
 ggsave(plot = dyn_plot, 
        filename = here(file_name), 
