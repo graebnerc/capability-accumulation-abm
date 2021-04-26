@@ -38,18 +38,19 @@ make_group_violins <- function(
       ) + 
     scale_fill_viridis(discrete = TRUE) +
     scale_color_viridis(discrete = TRUE, direction = -1) +
+    scale_x_discrete(labels = c("Barabasi-Albert"="BA")) +
     ggtitle(title) +
     xlab("") + ylab(y_title) +
     theme_icae() +
     theme(
-      plot.title = element_text(size=14),
-      axis.text = element_text(size = 12),
+      plot.title = element_text(size=18),
+      axis.text = element_text(size = 18),
       axis.text.x = element_text(
         angle = 0, hjust = 0.5, vjust = 0.6),
-      axis.text.y = element_text(size = 11),
-      axis.title.y = element_text(size = 13), 
+      axis.text.y = element_text(size = 18),
+      axis.title.y = element_text(size = 19), 
       panel.grid.major.x = element_blank(), 
-      legend.text = element_text(size = 14)
+      legend.text = element_text(size = 20)
       )
 }
 
@@ -70,31 +71,29 @@ agg_tmax_data <- data.table::fread(
       levels=c("Random", "Barabasi-Albert", "Complete"))
   )
 
-title <- "The effect on average complexity"
-y_title <- "Average complexity of produced products"
+title <- "The effect on avg. complexity"
+y_title <- "Avg. compl. of prod. products"
 x_variable <- "prod_space_struc"
 fill_variable <- "prod_sp_val_alct"
 y_variable <- "comp_produced_prod_mean"
 
 topdist_comp <- make_group_violins(
   agg_tmax_data, x_variable, y_variable, fill_variable,
-  title, y_title, violin_width=1.1) +
-  theme(axis.text.x = element_text(angle = 0))
+  title, y_title, violin_width=1.1)
 topdist_comp
 
 title <- "The effect on prices"
-y_title <- "Average price of produced products"
+y_title <- "Avg. price of prod. products"
 x_variable <- "prod_space_struc"
 fill_variable <- "prod_sp_val_alct"
 y_variable <- "price_produced_prod_mean"
 
 topdist_prices <- make_group_violins(
   agg_tmax_data, x_variable, y_variable, fill_variable,
-  title, y_title, violin_width=1.1) +
-  theme(axis.text.x = element_text(angle = 0))
+  title, y_title, violin_width=1.1)
 topdist_prices
 
-title <- "The effect on produced products"
+title <- "The effect on prod. products"
 y_title <- "Share of produced products"
 x_variable <- "prod_space_struc"
 fill_variable <- "prod_sp_val_alct"
@@ -105,18 +104,19 @@ topdist_share <- make_group_violins(
   title, y_title, violin_width=1.1) +
   scale_y_continuous(
     labels = scales::percent_format(scale = 100, accuracy = 1)
-    ) +
-  theme(axis.text.x = element_text(angle = 0))
+    )
 topdist_share
 
 full_violin <- ggarrange(
   topdist_share, topdist_prices, topdist_comp, ncol = 3, 
-  labels = paste0(LETTERS[1:3], ")"), common.legend = T, legend = "bottom")
+  labels = paste0(LETTERS[1:3], ")"), 
+  font.label = list(size=18),
+  common.legend = T, legend = "bottom")
 
 full_violin <- ggpubr::annotate_figure(
   full_violin, 
   top = ggpubr::text_grob(
-    "Joint effect of topology and allocation of complexity", size = 16), 
+    "Joint effect of topology and allocation of complexity", size = 20), 
   fig.lab.size = 18)
 
 file_name <- "figures/topdist_dist.pdf"

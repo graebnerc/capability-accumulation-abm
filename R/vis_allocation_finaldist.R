@@ -32,7 +32,10 @@ topology_complexity <- make_point_plot(
   agg_tmax_data, x_variable, y_variable, 
   title, y_title, point_function=stat_used) + 
   scale_fill_manual(values = col_mapping_fill) +
-  scale_color_manual(values = col_mapping_col)
+  scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(
+    labels=c("Eigenvector" = "Eigenvect.", "Closeness" = "Closen.")
+    )
 
 # The effect of complexity allocation on produced products --------------------
 
@@ -47,7 +50,10 @@ topology_share_products <- make_point_plot(
     labels = scales::percent_format(scale = 100, accuracy = 1)
     ) + 
   scale_fill_manual(values = col_mapping_fill) +
-  scale_color_manual(values = col_mapping_col)
+  scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(
+    labels=c("Eigenvector" = "Eigenvect.", "Closeness" = "Closen.")
+  )
 
 # The effect of complexity allocation on prices -------------------------------
 
@@ -63,13 +69,16 @@ topology_price_mean <- make_point_plot(
     limits = c(0, 320)
     ) +
   scale_fill_manual(values = col_mapping_fill) +
-  scale_color_manual(values = col_mapping_col)
+  scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(
+    labels=c("Eigenvector" = "Eigenvect.", "Closeness" = "Closen.")
+  )
 
 # Full plot- ------------------------------------------------------------------
 
 file_name <- paste0("figures/allocation_dist_", stat_used,".pdf")
 
-topology_total <- ggpubr::ggarrange(#topology_total_output, 
+topology_total <- ggpubr::ggarrange(
   topology_share_products, 
   topology_price_mean, 
   topology_complexity,
@@ -79,7 +88,7 @@ topology_total <- ggpubr::ggarrange(#topology_total_output,
 topology_total <- ggpubr::annotate_figure(
   topology_total, 
   top = ggpubr::text_grob(
-    "Effect of the allocation of product complexity values", size = 20), 
+    "Effect of the allocation of product complexity values", size = 24), 
   fig.lab.size = 18)
 
 ggsave(plot = topology_total, 

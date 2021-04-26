@@ -27,7 +27,7 @@ agg_tmax_data <- data.table::fread(
 # The effect of topology on average complexity --------------------------------
 
 title <- "Topology and average complexity"
-y_title <- "Average complexity of produced products"
+y_title <- "Avg. complexity of prod. products"
 x_variable <- "prod_space_struc"
 y_variable <- "comp_produced_prod_mean"
 topology_complexity <- make_point_plot(
@@ -35,9 +35,11 @@ topology_complexity <- make_point_plot(
   title, y_title, point_function=stat_used, 
   plot_kind = "violin", violin_width=1.1) +
   theme(
-    axis.text.x = element_text(angle = 15)) + 
+    axis.text.x = element_text(angle = 17),
+    axis.title.y = element_text(size = 20)) + 
   scale_fill_manual(values = col_mapping_fill) +
   scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(labels = c("Barabasi-Albert"="BA")) +
   guides(color = guide_legend(ncol = 6), fill = guide_legend(ncol = 6))
 
 # The effect of topology on produced products ---------------------------------
@@ -45,17 +47,19 @@ topology_complexity <- make_point_plot(
 x_variable <- "prod_space_struc"
 y_variable <- "share_produced_products"
 title <- "Topology and produced products"
-y_title <- "Share of of produced products"
+y_title <- "Share of prod. products"
 
 topology_share_products <- make_point_plot(
   agg_tmax_data, x_variable, y_variable, 
   title, y_title, point_function=stat_used) +
-  theme(axis.text.x = element_text(angle = 15)) + 
+  theme(axis.text.x = element_text(angle = 17),
+        axis.title.y = element_text(size = 20)) + 
   scale_y_continuous(
     labels = scales::percent_format(scale = 100, accuracy = 1)
     ) +
   scale_fill_manual(values = col_mapping_fill) +
   scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(labels = c("Barabasi-Albert"="BA")) +
   guides(color = guide_legend(ncol = 6), fill = guide_legend(ncol = 6))
 
 # The effect of topology on prices --------------------------------------------
@@ -63,14 +67,16 @@ topology_share_products <- make_point_plot(
 x_variable <- "prod_space_struc"
 y_variable <- "price_produced_prod_mean"
 title <- "Topology and prices"
-y_title <- "Mean of prices of produced products"
+y_title <- "Mean price of prod. products"
 
 topology_price_mean <- make_point_plot(
   agg_tmax_data, x_variable, y_variable, 
   title, y_title, point_function=stat_used) +
-  theme(axis.text.x = element_text(angle = 15)) + 
+  theme(axis.text.x = element_text(angle = 17),
+        axis.title.y = element_text(size = 20)) + 
   scale_fill_manual(values = col_mapping_fill) +
   scale_color_manual(values = col_mapping_col) +
+  scale_x_discrete(labels = c("Barabasi-Albert"="BA")) +
   guides(color = guide_legend(ncol = 6), fill = guide_legend(ncol = 6))
 
 
@@ -84,14 +90,14 @@ topology_total <- ggpubr::ggarrange(
   topology_complexity,
   ncol = 3, nrow = 1, 
   labels = paste0(LETTERS[1:3], ")"), 
-  font.label = list(size=17), 
+  font.label = list(size=21), 
   common.legend = T, legend = "bottom")
 
 topology_total <- ggpubr::annotate_figure(
   topology_total, 
   top = ggpubr::text_grob(
-    "The impact of different product space topologies", size = 20), 
-  fig.lab.size = 18)
+    "The impact of different product space topologies", size = 23), 
+  fig.lab.size = 21)
 
 
 ggsave(plot = topology_total, 

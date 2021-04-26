@@ -74,13 +74,13 @@ make_point_plot <- function(
     xlab("") + ylab(y_title) +
     theme_icae() +
     theme(
-      plot.title = element_text(size=20),
-      axis.text = element_text(size = 14),
+      plot.title = element_text(size=21),
+      axis.text = element_text(size = 18),
       axis.text.x = element_text(
         angle = 0, hjust = 0.5, vjust = 0.6),
-      axis.text.y = element_text(size = 12),
-      axis.title.y = element_text(size = 18), 
-      axis.title.x = element_text(size = 16), 
-      legend.text = element_text(size = 19),
+      axis.text.y = element_text(size = 18),
+      axis.title.y = element_text(size = 19), 
+      axis.title.x = element_text(size = 18), 
+      legend.text = element_text(size = 23),
       panel.grid.major.x = element_blank())
 }

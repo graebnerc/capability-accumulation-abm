@@ -8,7 +8,7 @@ suppressPackageStartupMessages(library(latex2exp))
 source(here("R/visualize_funs.R"))
 stat_used <- "mean"
 
-legend_title_size <- 17
+legend_title_size <- 23
 
 # The effect of alpha on average complexity -----------------------------------
 
@@ -18,7 +18,7 @@ agg_tmax_data <- data.table::fread(
 x_variable <- "delta_coefficient"
 
 title <- latex2exp::TeX("$\\alpha$ and average complexity")
-y_title <- "Average complexity of produced products"
+y_title <- "Avg. complexity of produced products"
 y_variable <- "comp_produced_prod_mean"
 
 alpha_complexity <- make_point_plot(
@@ -50,7 +50,7 @@ agg_tmax_data <- data.table::fread(
 x_variable <- "max_info"
 
 title <- latex2exp::TeX("Vision and average complexity")
-y_title <- "Average complexity of produced products"
+y_title <- "Avg. complexity of produced products"
 y_variable <- "comp_produced_prod_mean"
 
 rangevis_complexity <- make_point_plot(
@@ -61,7 +61,7 @@ rangevis_complexity <- make_point_plot(
 
 # The range of vision and produced products------------------------------------
 
-title <- latex2exp::TeX("Vision and produced products")
+title <- latex2exp::TeX("Vision and prod. products")
 y_variable <- "share_produced_products"
 y_title <- "Share of of produced products"
 
@@ -81,8 +81,8 @@ agg_tmax_data <- data.table::fread(
   mutate(nominal_demand=as.factor(nominal_demand))
 x_variable <- "nominal_demand"
 
-title <- latex2exp::TeX("Saturation threshold and average complexity")
-y_title <- "Average complexity of produced products"
+title <- latex2exp::TeX("Saturation threshold and avg. complexity")
+y_title <- "Avg. complexity of produced products"
 y_variable <- "comp_produced_prod_mean"
 
 saturation_complexity <- make_point_plot(
@@ -93,7 +93,7 @@ saturation_complexity <- make_point_plot(
 
 # The effect of the saturation threshold on produced products------------------
 
-title <- latex2exp::TeX("Saturation threshold and produced products")
+title <- latex2exp::TeX("Saturation threshold and prod. products")
 y_variable <- "share_produced_products"
 y_title <- "Share of of produced products"
 
@@ -125,20 +125,20 @@ sensitivity_total <- ggpubr::ggarrange(
   ggpubr::ggarrange(
     saturation_share_products, saturation_prices, saturation_complexity, 
     ncol = 3, nrow = 1, labels = paste0(LETTERS[1:3], ")"), 
-    font.label = list(size=17),
+    font.label = list(size=21),
     common.legend = T, legend = "bottom"),
   ggpubr::ggarrange(
     ggpubr::ggarrange(
       alpha_share_products, alpha_complexity, 
       ncol = 2, nrow = 1, labels = paste0(LETTERS[4:5], ")"), 
-      font.label = list(size=17),
+      font.label = list(size=21),
       common.legend = T, legend = "bottom"
     ),
     ggpubr::ggarrange(
       rangevis_share_products + guides(fill=guide_legend(ncol = 6)), 
       rangevis_complexity + guides(fill=guide_legend(ncol = 6)), 
       ncol = 2, nrow = 1, labels = paste0(LETTERS[6:7], ")"), 
-      font.label = list(size=17),
+      font.label = list(size=21),
       common.legend = T, legend = "bottom"
     ),
     ncol = 2, nrow = 1),

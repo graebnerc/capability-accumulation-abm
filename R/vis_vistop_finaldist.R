@@ -24,8 +24,8 @@ make_heatmap <- function(data_used, x_variable, y_variable,
       axis.title = element_blank(), 
       panel.border = element_blank(), 
       axis.line = element_blank(),
-      axis.text = element_text(size=12),
-      plot.title = element_text(size=14),
+      axis.text = element_text(size=18),
+      plot.title = element_text(size=18),
       legend.title = element_blank())
 }
 
@@ -52,23 +52,25 @@ agg_tmax_data <- data.table::fread(
       levels=c("Random", "B-A", "Complete"))
   )
 
-title_plot <- "Share of produced products\n"
+title_plot <- "Share of prod. products\n"
 share <- make_heatmap(agg_tmax_data, x_var, y_var, color_vars[1], title_plot)
 
-title_plot <- "Prices of produced products\n"
+title_plot <- "Prices\n"
 price <- make_heatmap(agg_tmax_data, x_var, y_var, color_vars[2], title_plot)
 
-title_plot <- "Complexity of produced products\n"
+title_plot <- "Complexity\n"
 comp <- make_heatmap(agg_tmax_data, x_var, y_var, color_vars[3], title_plot)
 
 full_map <- ggarrange(
-  share, price, comp, ncol = 3, labels = paste0(LETTERS[1:3], ")"))
+  share, price, comp, ncol = 3, 
+  labels = paste0(LETTERS[1:3], ")"),
+  font.label = list(size=18))
 
 full_map <- ggpubr::annotate_figure(
   full_map, 
   top = ggpubr::text_grob(TeX(
     "Joint effect of topology and the maximum range of vision $\\Upsilon_{max}$"
-    ), size = 16)
+    ), size = 20)
   )
 
 file_name <- "figures/vistop_heatmap.pdf"

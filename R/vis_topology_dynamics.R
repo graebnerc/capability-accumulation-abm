@@ -15,11 +15,11 @@ update_dyn_plot <- function(x){
     theme_icae() + 
     theme(
       axis.title.x = element_blank(),
-      plot.title = element_text(size=20),
-      axis.text.x = element_text(size = 16), 
-      axis.text.y = element_text(size = 14),
-      axis.title.y = element_text(size = 16), 
-      legend.text = element_text(size=18)
+      plot.title = element_text(size=22),
+      axis.text.x = element_text(size = 18), 
+      axis.text.y = element_text(size = 18),
+      axis.title.y = element_text(size = 22), 
+      legend.text = element_text(size=23)
       )
 }
 
@@ -49,7 +49,7 @@ dyn_plot_shares <- ggplot(
       ymin=share_produced_products_mean-0.5*share_produced_products_std,
       ymax=share_produced_products_mean+0.5*share_produced_products_std),
     alpha=errorbar_alpha, width=errorbar_width) +
-  ylab("Average share of produced products") +
+  ylab("Avg. share of produced products") +
   viridis::scale_color_viridis(
     discrete = T, option = "D",
     labels = c(
@@ -78,7 +78,7 @@ dyn_plot_prices <- ggplot(
       ymin=price_produced_prod_mean_mean-0.5*price_produced_prod_mean_std,
       ymax=price_produced_prod_mean_mean+0.5*price_produced_prod_mean_std),
     alpha=errorbar_alpha, width=errorbar_width) +
-  ylab("Average prices of produced products") +
+  ylab("Avg. prices of produced products") +
   viridis::scale_color_viridis(
     discrete = T, option = "D",
     labels = c(
@@ -108,7 +108,7 @@ dyn_plot_complexity <- ggplot(
       ymin=comp_produced_prod_mean_mean-0.5*comp_produced_prod_mean_std,
       ymax=comp_produced_prod_mean_mean+0.5*comp_produced_prod_mean_std),
     alpha=errorbar_alpha, width=errorbar_width) +
-  ylab("Average complexity of produced products")  +
+  ylab("Avg. complexity of prod. products")  +
   viridis::scale_color_viridis(
     discrete = T, option = "D",
     labels = c(
@@ -127,7 +127,8 @@ dyn_plot_complexity <- update_dyn_plot(dyn_plot_complexity) +
 
 dyn_plot <- ggarrange(
   dyn_plot_shares, dyn_plot_prices, dyn_plot_complexity, 
-  ncol = 3, labels = paste0(LETTERS, ")"), font.label = list(size=18),
+  ncol = 3, labels = paste0(LETTERS, ")"), 
+  font.label = list(size=21),
   legend = "bottom", common.legend = T)
 
 file_name <- "figures/topology_dynamics.pdf"
