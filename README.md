@@ -5,10 +5,10 @@
 This repository contains the code for the model used in the paper "Capability accumulation and product innovation: An agent-based perspective". 
 The latter has been published as:
 
-> Gräbner, C. and Hornykewycz, A. (2020): Capability accumulation and product innovation: An agent-based perspective, *ICAE Working Paper*, 
-No. 108. URL: [https://www.jku.at/fileadmin/gruppen/108/ICAE_Working_Papers/wp108.pdf](https://www.jku.at/fileadmin/gruppen/108/ICAE_Working_Papers/wp108.pdf)
+> Gräbner, C. and Hornykewycz, A. (2020): Capability accumulation and product innovation: an agent-based perspective, *Journal of Evolutionary Economics*, forthcoming. 
+DOI: [10.1007/s00191-021-00732-9](http://dx.doi.org/10.1007/s00191-021-00732-9)
 
-and is available [here](https://www.jku.at/fileadmin/gruppen/108/ICAE_Working_Papers/wp108.pdf) (OA).
+and is available [here](http://dx.doi.org/10.1007/s00191-021-00732-9) (OA).
 
 ## Folder structure of the repository
 
