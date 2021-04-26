@@ -5,7 +5,7 @@
 This repository contains the code for the model used in the paper "Capability accumulation and product innovation: An agent-based perspective". 
 The latter has been published as:
 
-> Gräbner, C. and Hornykewycz, A. (2020): Capability accumulation and product innovation: an agent-based perspective, *Journal of Evolutionary Economics*, forthcoming. 
+> Gräbner, C. and Hornykewycz, A. (2021): Capability accumulation and product innovation: an agent-based perspective, *Journal of Evolutionary Economics*, forthcoming. 
 DOI: [10.1007/s00191-021-00732-9](http://dx.doi.org/10.1007/s00191-021-00732-9)
 
 and is available [here](http://dx.doi.org/10.1007/s00191-021-00732-9) (OA).
